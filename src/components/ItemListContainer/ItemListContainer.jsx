@@ -1,4 +1,4 @@
-import {useState, useEffect, useContext} from 'react';
+import {useState, useEffect} from 'react';
 import ItemList from '../itemList/itemList.jsx';
 import {getProductos} from '../../assets/firebase.js'
 import { useParams } from 'react-router-dom';
@@ -11,12 +11,13 @@ const ItemListContainer = () => {
     useEffect(() => {
         if(category) {
             getProductos().then(products => {
-                const productsList= products.filter(prod => prod.idCategoria === parseInt(category))
+                const productsList= products.filter(prod => prod.idCategoria === parseInt(category)).filter(prod => prod.stock > 0)
                 const cardProductos = ItemList({productsList})
                 setProductos(cardProductos)
             })
         } else {
-            getProductos().then(productsList => {
+            getProductos().then(products => {
+                const productsList= products.filter(prod => prod.stock > 0)
                 const cardProductos = ItemList({productsList})
                 setProductos(cardProductos)
             })

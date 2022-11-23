@@ -10,8 +10,6 @@ const ItemDetail = ({producto}) => {
     const onAdd = (contador) => {
         addItem(producto, contador)
     }
-
-
     return (
         <div className='row g-0'>
             <div className="col-md-4">
@@ -25,7 +23,7 @@ const ItemDetail = ({producto}) => {
                     <p className='card-text'>Precio: ${producto.precio}</p>
                     <p className='card-text'>Stock: {producto.stock} productos</p>
                     <ItemCount stock = {producto.stock} onAdd={onAdd}/> <br />
-                    <button className="btn btn-secondary"><Link to="/cart" className="nav-link">Finalizar compra</Link></button>
+                    <button className="btn btn-secondary"><Link to="/checkout" className="nav-link">Finalizar compra</Link></button>
                 </div>
             </div>
         </div>

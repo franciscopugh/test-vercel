@@ -20,13 +20,3 @@ const Navbar = () => {
 }
 
 export default Navbar;
-{
-  /*
-<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-<div className="container-fluid">
-    <Secciones/>
-    <CartWidget/>
-</div>
-</nav>
-  */
-}

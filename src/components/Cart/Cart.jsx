@@ -13,7 +13,7 @@ const Cart = () => {
                 <Link to={'/'}><button className="btn btn-dark">Ir al inicio</button></Link>
             </div> 
             : 
-            <div>
+            <div className=" container cartContainer">
                 {cart.map((prod,indice) =><div className="card mb-3" key={indice} style={{maxWidth: '540px'}}>
                 <div className="row g-0">
                     <div className="col-md-4">
@@ -23,19 +23,20 @@ const Cart = () => {
                         <div className="card-body">
                             <h5 className="card-title">{prod.nombre}</h5>
                             <p className="card-text">Cantidad: {prod.cant}</p>
-                            <p className="card-text">Precio unitario: {prod.precio}</p>
-                            <p className="card-text">Subtotal: {prod.precio * prod.cant}</p>
+                            <p className="card-text">Precio unitario: $ {new Intl.NumberFormat('de-DE').format(prod.precio)}</p>
+                            <p className="card-text">Subtotal: $ {new Intl.NumberFormat('de-DE').format(prod.precio * prod.cant)}</p>
+                            <button className="btn btn-danger" onClick={() => removeItem(prod.id)}><i className="fas fa-trash-alt"></i></button>
                         </div>
-                        <button className="btn btn-danger" onClick={() => removeItem(prod.id)}>Eliminar Producto</button>
+                        
                     </div>
                 </div>
             </div>
             )}
             <div>
-                <p>Total: {totalPrice()}</p>
-                <button className="btn btn-danger" onClick={emptyCart}>Limpiar Carrito</button>
+                <p>Total: $ {new Intl.NumberFormat('de-DE').format(totalPrice())}</p>
+                <button className="btn btn-danger buttonCarts" onClick={emptyCart}>Limpiar Carrito</button>
                 <Link to="/checkout">
-                    <button className="btn btn-primary">Finalizar Compra</button>
+                    <button className="btn btn-primary buttonCarts">Finalizar Compra</button>
                 </Link>
             </div>
             </div>
